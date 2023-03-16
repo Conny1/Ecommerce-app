@@ -51,7 +51,7 @@ const onToken =(t)=>{
   if( price.length === 0 ) return
   let totalPrice = 0
   for (let i = 0; i < price.length; i++) {
-      totalPrice = totalPrice + price[i].newPrice 
+      totalPrice = totalPrice + price[i].newPrice * incrq
     
    }
    settotal(totalPrice)
