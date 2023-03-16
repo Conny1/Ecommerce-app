@@ -29,7 +29,7 @@ const Cart = () => {
  const [cart, setcart] = useState([])
  const token = useSelector((state)=>state.user.user)
  const url ='https://ecomm-euvk.onrender.com'
-const [incrq, setincrq] = useState(1)
+
 const [total, settotal] = useState(0)
 // eslint-disable-next-line
 const [toke, settoke] = useState(null)
@@ -51,7 +51,7 @@ const onToken =(t)=>{
   if( price.length === 0 ) return
   let totalPrice = 0
   for (let i = 0; i < price.length; i++) {
-      totalPrice = totalPrice + price[i].newPrice * incrq
+      totalPrice = totalPrice + price[i].newPrice
     
    }
    settotal(totalPrice)
@@ -88,7 +88,7 @@ console.log()
    <Container>
     { cart.length > 0? cart.map((item)=>{
       
-      return <Cartcomponents key={item?._id} item={item} userId={userId} fetchCart={fetchCart} axiosInterceprot={axiosInterceprot} url={url} incrq={incrq} setincrq={setincrq}/>
+      return <Cartcomponents key={item?._id} item={item} userId={userId} fetchCart={fetchCart} axiosInterceprot={axiosInterceprot} url={url} />
     })   
     :<h1>No item in cart</h1>  }
   

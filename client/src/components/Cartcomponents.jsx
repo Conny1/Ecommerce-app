@@ -44,23 +44,25 @@ const Cartcomponents = ({item,userId,fetchCart,axiosInterceprot,url}) => {
 
  
  
- const increaseQuantity =  (action)=>{
+ const increaseQuantity = async (action)=>{
   if ( action === 'inc' ){
     setincrq((prev)=>prev + 1)
-
+    
   }
   if ( action ==='dec' ){
     if ( incrq < 2 ){
-      return setincrq(1)
+    
     }
+    
     setincrq((prev)=>prev - 1)
+  
   }
 
  }
   
   const  deletecart = async ()=>{
     await axiosInterceprot.put(`${url}/api/user/removecart/${userId?._id}/${item._id}`)
-    await fetchCart()
+    await fetchCart(incrq)
   }
   
     return (
@@ -82,7 +84,7 @@ const Cartcomponents = ({item,userId,fetchCart,axiosInterceprot,url}) => {
            <MdArrowRight  onClick={()=>increaseQuantity('inc')}  style={{fontSize:'30px', cursor:'pointer'}}   />
             </Info>
           </Info>
-          <Text style={{marginTop:'0px'}} >KSh {item?.newPrice}</Text>
+          <Text style={{marginTop:'0px'}} >KSh {item?.newPrice *incrq}</Text>
           
   
         </Info>
