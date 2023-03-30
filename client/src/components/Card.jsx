@@ -57,7 +57,7 @@ const Card = ({item}) => {
   const userId = useSelector((state)=> state.user.user?._id)
    const dispatch = useDispatch();
    const token = useSelector((state)=>state.user.user)
-   const url ='https://ecomm-euvk.onrender.com'
+   const url ='https://ecommapi-xp5g.onrender.com'
    const navigate = useNavigate()
  
    const axiosInterceprot= axios.create({

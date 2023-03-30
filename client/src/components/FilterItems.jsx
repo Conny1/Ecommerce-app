@@ -23,7 +23,7 @@ justify-content:center;
 
 `
 const FilterItems = () => {
-  const url ='https://ecomm-euvk.onrender.com'
+  const url ='https://ecommapi-xp5g.onrender.com'
   const [products, setproducts] = useState([])
   const [category, setcategory] = useState(undefined)
   const userId = useSelector((state)=> state.user.user?._id)

@@ -34,7 +34,7 @@ outline:1px solid #9f9f9f;
 const Products = () => {
   const [products, setproducts] = useState([])
   const [serchitem, setserchitem] = useState('')
-  const url = 'https://ecomm-euvk.onrender.com'
+  const url = 'https://ecommapi-xp5g.onrender.com'
 
   
  useEffect(() => {

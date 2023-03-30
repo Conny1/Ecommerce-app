@@ -59,7 +59,7 @@ const Signup = () => {
   dispatch(  loadingdata())
   if(!email || !password ) return alert("Fill all given inputs")
 try {
-const results= await  axios.post(`https://ecomm-euvk.onrender.com/api/auth/login`,{email,password})
+const results= await  axios.post(`https://ecommapi-xp5g.onrender.com/api/auth/login`,{email,password})
 dispatch( getData(results.data) ) 
 // console.log(results.data)    
 navigate("/")
@@ -74,7 +74,7 @@ alert (error.response.data.message)
        dispatch(  loadingdata())
        if( !name || !email || !password ) return alert("Fill all given inputs")
   try {
-    const results= await  axios.post(`https://ecomm-euvk.onrender.com/api/auth/signup`,{name,email,password})
+    const results= await  axios.post(`https://ecommapi-xp5g.onrender.com/api/auth/signup`,{name,email,password})
     dispatch( getData(results.data) )     
     navigate("/")
   } catch (error) {
@@ -98,7 +98,7 @@ const google=()=>{
     // send data to db
     dispatch(loadingdata())
    
-    axios.post(`https://ecomm-euvk.onrender.com/api/auth/google`,{
+    axios.post(`https://ecommapi-xp5g.onrender.com/api/auth/google`,{
       name:user.displayName ,
       email:user.email,
         

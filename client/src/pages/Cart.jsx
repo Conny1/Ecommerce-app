@@ -28,7 +28,7 @@ const Cart = () => {
   const userId = useSelector((state)=>state.user.user)
  const [cart, setcart] = useState([])
  const token = useSelector((state)=>state.user.user)
- const url ='https://ecomm-euvk.onrender.com'
+ const url ='https://ecommapi-xp5g.onrender.com'
 
 const [total, settotal] = useState(0)
 // eslint-disable-next-line

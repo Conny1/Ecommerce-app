@@ -14,7 +14,7 @@ const Wish = () => {
  const userId = useSelector((state)=>state.user.user)
  const [wish, setwish] = useState([])
  const token = useSelector((state)=>state.user.user)
- const url ='https://ecomm-euvk.onrender.com'
+ const url ='https://ecommapi-xp5g.onrender.com'
  const dispatch = useDispatch();
 
  const axiosInterceprot= axios.create({
