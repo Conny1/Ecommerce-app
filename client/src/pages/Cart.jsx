@@ -10,7 +10,6 @@ import {
   getErrorincart,
   loadingcartdata,
 } from "../redux/cartslice";
-import StripeCheckout from "react-stripe-checkout";
 
 const Container = styled.div``;
 const Button = styled.button`
@@ -25,6 +24,7 @@ const Button = styled.button`
   margin-bottom: 20px;
   cursor: pointer;
 `;
+const Input = styled.input``;
 const Cart = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.user);
@@ -35,13 +35,7 @@ const Cart = () => {
   const url = "https://ecommapi-xp5g.onrender.com";
 
   const [total, settotal] = useState(0);
-  // eslint-disable-next-line
-  const [toke, settoke] = useState(null);
-  const KEY = process.env.REACT_APP_STRIPE_KEY;
-
-  const onToken = (t) => {
-    settoke(t);
-  };
+  const [payWithM, setpayWithM] = useState(false);
 
   const axiosInterceprot = axios.create({
     baseURL: url,
@@ -105,19 +99,80 @@ const Cart = () => {
           <h1>No item in cart</h1>
         )}
 
-        <Container style={{ display: "flex", justifyContent: "center" }}>
-          Total price:{TotalPrice}
+        <Container
+          style={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            justifyContent: "space-evenly",
+            flexWrap: "wrap",
+            position: "relative",
+          }}
+        >
+          <h3>Total price: ksh{TotalPrice}</h3>
           <br />
-          <Button>
-            <StripeCheckout
-              billingAddress
-              shippingAddress
-              description={`Your total is ${TotalPrice}`}
-              token={onToken}
-              amount={total * 100}
-              stripeKey={KEY}
-            />
-          </Button>
+
+          <h3>pay with:</h3>
+          <Container>
+            <Button
+              onClick={() => {
+                setpayWithM(true);
+              }}
+            >
+              Mpesa
+            </Button>
+            <Button> card </Button>
+          </Container>
+
+          {payWithM && (
+            <Container
+              style={{
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+                backgroundColor: "#080808",
+                top: 0,
+                opacity: 0.9,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Input
+                style={{
+                  height: "25px",
+                  color: "black",
+                  fontWeight: "bold",
+                }}
+                type="number"
+                name="phnNumber"
+                placeholder="Phone NO eg 0728..."
+              />
+              <Button
+                style={{
+                  backgroundColor: "#ffff",
+                  width: "75px",
+                  height: "30px",
+                  color: "black",
+                  fontWeight: "bold",
+                }}
+              >
+                pay
+              </Button>
+              <Button
+                style={{
+                  position: "absolute",
+                  backgroundColor: "#ffff",
+                  bottom: 0,
+                  color: "black",
+                  fontWeight: "bold",
+                }}
+                onClick={() => setpayWithM(false)}
+              >
+                cancel
+              </Button>
+            </Container>
+          )}
         </Container>
       </Container>
 
